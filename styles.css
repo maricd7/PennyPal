@@ -26,6 +26,9 @@ nav ul{
     gap: 1rem;
     color: #fefefe;
 }
+a{
+    text-decoration: none;
+}
 .logo{
     color: #fefefe;
 }
@@ -34,12 +37,12 @@ nav ul{
     display: flex;
     flex-direction: column;
 }
-.dashboard h2 {
+.dashboard-text h2 {
     font-weight: bold;
     font-size: 2rem;
     color: #fefefe;
 }
-.dashboard h3 {
+.dashboard-text h3 {
     font-weight:normal;
     font-size: 1rem;
     color: #d4d4d4;
@@ -67,6 +70,7 @@ nav ul{
     padding: 2rem;
     border-radius: 1rem;
     border: 0;
+    min-width: 400px;
 }
 .income-container{
     background-color: #9fd1ec;
@@ -79,4 +83,38 @@ nav ul{
 }
 .dashboard-elements p {
     font-size: 2.5rem;
+}
+
+
+.history{
+    margin: 0 20rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.input-form{
+        margin: 0 20rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+        color: #fefefe;
+        gap: 2rem;
+}
+.input-container input, select{
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 0;
+}
+.submit-button{
+    background-color: #4fa3d1;
+    color: white;
+    border-radius: 0.5rem;
+    border: 0;
+    padding: 1rem 2rem;
+    cursor: pointer;
 }
