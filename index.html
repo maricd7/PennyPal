@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PennyPal</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script src="app.js"></script>
-    </head>
-<body>
-    PennyPal
-</body>
+  </head>
+  <body>
+    <nav>
+      <h4 class="logo">PennyPal</h4>
+      <ul>
+        <li><a>Home</a></li>
+        <li><a class="wallet-button">Wallet</a></li>
+      </ul>
+    </nav>
+    <section class="dashboard">
+      <div class="dashboard-text">
+        <h2>Dashboard</h2>
+      <h3>Stats for this month.</h3>
+      </div>
+      <!-- change this month text with js later-->
+      <div class="dashboard-elements">
+        <div class="income-container">
+            <h4>Total income this month</h4>
+            <p class="income-value">800</p>
+        </div>
+        <div class="expanse-container">
+            <h4>Total income this month</h4>
+            <p class="expanse-value">400</p>
+        </div>
+        <div class="balance-container">
+            <h4>Total income this month</h4> <!--green if profit red if losing money-->
+            <p class="balance-percentage">8%</p>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

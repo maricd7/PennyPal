@@ -7,3 +7,76 @@
     font-family: 'Open Sans';
 }
 
+body{
+    width: 100%;
+    background-color: #2e3840 ;
+    margin: 0 auto;
+}
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    align-items: center;  
+    gap: 1rem;
+    color: #fefefe;
+}
+.logo{
+    color: #fefefe;
+}
+.dashboard{
+    margin: 0 20rem;
+    display: flex;
+    flex-direction: column;
+}
+.dashboard h2 {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #fefefe;
+}
+.dashboard h3 {
+    font-weight:normal;
+    font-size: 1rem;
+    color: #d4d4d4;
+}
+.dashboard-text{
+    display: flex;
+    flex-direction: column;
+}
+.wallet-button{
+    background-color: #4fa3d1;
+    color: #fefefe;
+    padding: 1rem 2rem;
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.dashboard-elements{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.dashboard-elements div {
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 0;
+}
+.income-container{
+    background-color: #9fd1ec;
+}
+.expanse-container{
+    background-color: rgb(255, 126, 126);
+}
+.balance-container{
+    background-color: rgb(142, 245, 142);
+}
+.dashboard-elements p {
+    font-size: 2.5rem;
+}
