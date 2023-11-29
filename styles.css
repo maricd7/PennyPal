@@ -78,9 +78,7 @@ a{
 .expanse-container{
     background-color: rgb(255, 126, 126);
 }
-.balance-container{
-    background-color: rgb(142, 245, 142);
-}
+
 .dashboard-elements p {
     font-size: 2.5rem;
 }
@@ -117,4 +115,10 @@ a{
     border: 0;
     padding: 1rem 2rem;
     cursor: pointer;
+}
+.positive{
+    background-color: rgb(142, 245, 142);
+}
+.negative{
+    background-color: rgb(255, 0, 43);
 }
