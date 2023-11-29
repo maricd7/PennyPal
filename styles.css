@@ -122,3 +122,36 @@ a{
 .negative{
     background-color: rgb(255, 0, 43);
 }
+.transactions-container{
+    margin-top: 2rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.thcontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;   
+    width: 100%;
+    justify-content: space-between;
+}
+.thtdcontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.history-name{
+    color: #fefefe;
+    font-size: 1.5rem;
+}
+.history-amount{
+    font-size: 2rem;
+    color: #fefefe;
+    font-weight: bold;
+}
+.history-date{
+    color: #d4d4d4;
+}
