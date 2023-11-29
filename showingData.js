@@ -3,15 +3,18 @@ const incomeValue = document.getElementById("total-income");
 const expenseValue = document.getElementById("total-expense");
 const balanceStatus = document.getElementById("balance-status");
 const balanceContainer = document.getElementById("balance-container");
-const transactionHistoryContainer = document.getElementById(
-  "transactions-history"
-);
+const transactionHistoryContainer = document.getElementById("transactions-history");
+const allFilter = document.getElementById("all");
+const expenseFilter = document.getElementById("expense-filter");
+const incomeFilter = document.getElementById("income-filter");
 
 const incomeData = [];
 const expenseData = [];
 let firstDate, lastDate;
 const expenseTransactionNames = [];
 const incomeTransactionNames = [];
+const expenseHistory = [];
+const incomeHistory = [];
 
 function sumCalculator(array) {
   let expenseSum = 0;
@@ -129,11 +132,12 @@ transactions.forEach((transaction) => {
   if (transaction.type == "Expense") {
     thAmount.innerHTML = "-" + transaction.amount;
     thAmount.classList.add("history-amount-negative");
+    expenseHistory.push(transaction);
   } else {
     thAmount.innerHTML = "+" + transaction.amount;
     thAmount.classList.add("history-amount-positive");
+    incomeHistory.push(transaction)
   }
-  thAmount.classList.add("history-amount");
 
   let thName = document.createElement("p");
   thName.innerHTML = transaction.name;
@@ -149,3 +153,72 @@ transactions.forEach((transaction) => {
   thContainer.appendChild(thAmount);
   transactionHistoryContainer.appendChild(thContainer);
 });
+
+expenseFilter.addEventListener("click", () => {
+  allFilter.classList.remove('active-filter'); 
+  incomeFilter.classList.remove('active-filter')
+  expenseFilter.classList.add('active-filter')
+  transactionHistoryContainer.innerHTML = "";
+  expenseHistory.forEach(expense=>{
+    let thContainer = document.createElement("div");
+    thContainer.classList.add("thcontainer");
+
+    let thtdContainer = document.createElement("div");
+    thtdContainer.classList.add("thtdcontainer");
+
+    let thAmount = document.createElement("p");
+    thAmount.innerHTML = "-" + expense.amount;
+    thAmount.classList.add("history-amount-negative");
+
+    let thName = document.createElement("p");
+    thName.innerHTML = expense.name;
+    thName.classList.add("history-name");
+
+    let thDate = document.createElement("p");
+    thDate.innerHTML = expense.date;
+    thDate.classList.add("history-date");
+
+    thtdContainer.appendChild(thName);
+    thtdContainer.appendChild(thDate);
+    thContainer.appendChild(thtdContainer);
+    thContainer.appendChild(thAmount);
+    transactionHistoryContainer.appendChild(thContainer);
+  })
+
+});
+
+incomeFilter.addEventListener('click', ()=>{
+  allFilter.classList.remove('active-filter'); 
+  expenseFilter.classList.remove('active-filter');
+  incomeFilter.classList.add('active-filter');
+
+  transactionHistoryContainer.innerHTML = "";
+  incomeHistory.forEach(income=>{
+    let thContainer = document.createElement("div");
+    thContainer.classList.add("thcontainer");
+
+    let thtdContainer = document.createElement("div");
+    thtdContainer.classList.add("thtdcontainer");
+
+    let thAmount = document.createElement("p");
+    thAmount.innerHTML = "+" + income.amount;
+    thAmount.classList.add("history-amount-positive");
+
+    let thName = document.createElement("p");
+    thName.innerHTML = income.name;
+    thName.classList.add("history-name");
+
+    let thDate = document.createElement("p");
+    thDate.innerHTML = income.date;
+    thDate.classList.add("history-date");
+
+    thtdContainer.appendChild(thName);
+    thtdContainer.appendChild(thDate);
+    thContainer.appendChild(thtdContainer);
+    thContainer.appendChild(thAmount);
+    transactionHistoryContainer.appendChild(thContainer);
+  })
+})
+allFilter.addEventListener('click', ()=>{
+  window.location.reload()
+})

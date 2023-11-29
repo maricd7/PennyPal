@@ -171,3 +171,18 @@ a{
     align-items: center;
     gap: 1rem;
 }
+
+.filters{
+    margin-top: 2rem ;
+}
+.all-filter , .income-filter, .expense-filter{
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    border: 0;
+    border-radius: 0.5rem;
+    background-color: #fefefe;
+}
+.active-filter{
+    background-color: #4fa3d1;
+    color: #fefefe;
+}
