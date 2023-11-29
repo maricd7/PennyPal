@@ -23,13 +23,23 @@
       <!-- change this month text with js later-->
       <div class="dashboard-elements">
         <div class="income-container">
-          <h4>Total income this month</h4>
-          <p class="income-value" id="total-income"></p>
+          <div class="icon-text">
+            <iconify-icon icon="uil:money-withdraw" width="64" height="64"></iconify-icon>
+            <div class="income-text">
+              <h4>Total income this month</h4>
+              <p class="income-value" id="total-income"></p>
+            </div>
+          </div>
           <canvas id="incomeChart"></canvas>
         </div>
         <div class="expanse-container">
-          <h4>Total expanse this month</h4>
-          <p class="expanse-value" id="total-expense"></p>
+          <div class="icon-text">
+            <iconify-icon icon="uil:money-withdraw" width="64" height="64" flip="vertical"></iconify-icon>
+            <div class="income-text">
+              <h4>Total expanse this month</h4>
+              <p class="expanse-value" id="total-expense"></p>
+            </div>
+          </div>
           <canvas id="expenseChart"></canvas>
         </div>
         <div class="balance-container" id="balance-container">
@@ -49,5 +59,6 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   </body>
 </html>

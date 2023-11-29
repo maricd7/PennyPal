@@ -126,7 +126,13 @@ transactions.forEach((transaction) => {
   thtdContainer.classList.add("thtdcontainer");
 
   let thAmount = document.createElement("p");
-  thAmount.innerHTML = transaction.amount;
+  if (transaction.type == "Expense") {
+    thAmount.innerHTML = "-" + transaction.amount;
+    thAmount.classList.add("history-amount-negative");
+  } else {
+    thAmount.innerHTML = "+" + transaction.amount;
+    thAmount.classList.add("history-amount-positive");
+  }
   thAmount.classList.add("history-amount");
 
   let thName = document.createElement("p");

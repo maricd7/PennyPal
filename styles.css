@@ -28,6 +28,7 @@ nav ul{
 }
 a{
     text-decoration: none;
+    color: #fefefe;
 }
 .logo{
     color: #fefefe;
@@ -65,13 +66,15 @@ a{
     justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
+    gap: 2rem;
 }
-.dashboard-elements div {
-    padding: 2rem;
+.income-container, .expanse-container, .balance-container{
+    padding: 1rem;
     border-radius: 1rem;
     border: 0;
     min-width: 400px;
 }
+
 .income-container{
     background-color: #9fd1ec;
 }
@@ -147,11 +150,24 @@ a{
     color: #fefefe;
     font-size: 1.5rem;
 }
-.history-amount{
+.history-amount-positive{
     font-size: 2rem;
     color: #fefefe;
     font-weight: bold;
+    color: rgb(142, 245, 142);
+}
+.history-amount-negative{
+    font-size: 2rem;
+    color: #fefefe;
+    font-weight: bold;
+    color:rgb(255, 0, 43) ;
 }
 .history-date{
     color: #d4d4d4;
+}
+.icon-text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
 }
