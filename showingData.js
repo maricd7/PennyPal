@@ -7,6 +7,10 @@ const transactionHistoryContainer = document.getElementById("transactions-histor
 const allFilter = document.getElementById("all");
 const expenseFilter = document.getElementById("expense-filter");
 const incomeFilter = document.getElementById("income-filter");
+const lineFilterBtn = document.getElementById('line-filter') ;
+const barFilterBtn  = document.getElementById('bar-filter');
+const pieFilterBtn = document.getElementById('pie-filter');
+
 
 const incomeData = [];
 const expenseData = [];
@@ -15,6 +19,8 @@ const expenseTransactionNames = [];
 const incomeTransactionNames = [];
 const expenseHistory = [];
 const incomeHistory = [];
+const chartTypes = ['line','bar','pie'];
+let chartType = 'line'; 
 
 function sumCalculator(array) {
   let expenseSum = 0;
@@ -64,7 +70,7 @@ sumCalculator(transactions);
 const incomeChart = document.getElementById("incomeChart");
 
 new Chart(incomeChart, {
-  type: "line",
+  type: chartType ,
   data: {
     labels: incomeTransactionNames,
     datasets: [
@@ -94,7 +100,7 @@ new Chart(incomeChart, {
 const expenseChart = document.getElementById("expenseChart");
 
 new Chart(expenseChart, {
-  type: "line",
+  type: chartType ,
   data: {
     labels: expenseTransactionNames,
     datasets: [
@@ -222,3 +228,19 @@ incomeFilter.addEventListener('click', ()=>{
 allFilter.addEventListener('click', ()=>{
   window.location.reload()
 })
+
+lineFilterBtn.addEventListener('click',()=>{
+  
+  chartType='line'
+  console.log(chartType, 'chart')
+})
+barFilterBtn.addEventListener('click',()=>{
+  chartType='bar'
+  console.log(chartType, 'chart')
+})
+pieFilterBtn.addEventListener('click',()=>{
+  console.log(expenseChart.data.datasets)
+  expenseChart.update();
+})
+const datasets = expenseChart.data;
+console.log(datasets);
