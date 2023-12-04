@@ -7,9 +7,7 @@ const transactionHistoryContainer = document.getElementById("transactions-histor
 const allFilter = document.getElementById("all");
 const expenseFilter = document.getElementById("expense-filter");
 const incomeFilter = document.getElementById("income-filter");
-const lineFilterBtn = document.getElementById('line-filter') ;
-const barFilterBtn  = document.getElementById('bar-filter');
-const pieFilterBtn = document.getElementById('pie-filter');
+
 
 
 const incomeData = [];
@@ -20,7 +18,7 @@ const incomeTransactionNames = [];
 const expenseHistory = [];
 const incomeHistory = [];
 const chartTypes = ['line','bar','pie'];
-let chartType = 'line'; 
+// let chartType = 'line'; 
 
 function sumCalculator(array) {
   let expenseSum = 0;
@@ -70,7 +68,7 @@ sumCalculator(transactions);
 const incomeChart = document.getElementById("incomeChart");
 
 new Chart(incomeChart, {
-  type: chartType ,
+  type:'line' ,
   data: {
     labels: incomeTransactionNames,
     datasets: [
@@ -100,7 +98,7 @@ new Chart(incomeChart, {
 const expenseChart = document.getElementById("expenseChart");
 
 new Chart(expenseChart, {
-  type: chartType ,
+  type: 'line' ,
   data: {
     labels: expenseTransactionNames,
     datasets: [
@@ -160,87 +158,57 @@ transactions.forEach((transaction) => {
   transactionHistoryContainer.appendChild(thContainer);
 });
 
+function updateTransactionHistory(array) {
+  transactionHistoryContainer.innerHTML = "";
+  array.forEach((transaction) => {
+    let thContainer = document.createElement("div");
+    thContainer.classList.add("thcontainer");
+
+    let thtdContainer = document.createElement("div");
+    thtdContainer.classList.add("thtdcontainer");
+
+    let thAmount = document.createElement("p");
+    if (transaction.type == "Expense") {
+      thAmount.innerHTML = "-" + transaction.amount;
+      thAmount.classList.add("history-amount-negative");
+    } else {
+      thAmount.innerHTML = "+" + transaction.amount;
+      thAmount.classList.add("history-amount-positive");
+    }
+
+    let thName = document.createElement("p");
+    thName.innerHTML = transaction.name;
+    thName.classList.add("history-name");
+
+    let thDate = document.createElement("p");
+    thDate.innerHTML = transaction.date;
+    thDate.classList.add("history-date");
+
+    thtdContainer.appendChild(thName);
+    thtdContainer.appendChild(thDate);
+    thContainer.appendChild(thtdContainer);
+    thContainer.appendChild(thAmount);
+    transactionHistoryContainer.appendChild(thContainer);
+  });
+}
+
 expenseFilter.addEventListener("click", () => {
   allFilter.classList.remove('active-filter'); 
   incomeFilter.classList.remove('active-filter')
   expenseFilter.classList.add('active-filter')
-  transactionHistoryContainer.innerHTML = "";
-  expenseHistory.forEach(expense=>{
-    let thContainer = document.createElement("div");
-    thContainer.classList.add("thcontainer");
-
-    let thtdContainer = document.createElement("div");
-    thtdContainer.classList.add("thtdcontainer");
-
-    let thAmount = document.createElement("p");
-    thAmount.innerHTML = "-" + expense.amount;
-    thAmount.classList.add("history-amount-negative");
-
-    let thName = document.createElement("p");
-    thName.innerHTML = expense.name;
-    thName.classList.add("history-name");
-
-    let thDate = document.createElement("p");
-    thDate.innerHTML = expense.date;
-    thDate.classList.add("history-date");
-
-    thtdContainer.appendChild(thName);
-    thtdContainer.appendChild(thDate);
-    thContainer.appendChild(thtdContainer);
-    thContainer.appendChild(thAmount);
-    transactionHistoryContainer.appendChild(thContainer);
-  })
-
+  updateTransactionHistory(expenseHistory);
 });
 
-incomeFilter.addEventListener('click', ()=>{
+incomeFilter.addEventListener('click', () => {
   allFilter.classList.remove('active-filter'); 
   expenseFilter.classList.remove('active-filter');
   incomeFilter.classList.add('active-filter');
+  updateTransactionHistory(incomeHistory);
+});
 
-  transactionHistoryContainer.innerHTML = "";
-  incomeHistory.forEach(income=>{
-    let thContainer = document.createElement("div");
-    thContainer.classList.add("thcontainer");
-
-    let thtdContainer = document.createElement("div");
-    thtdContainer.classList.add("thtdcontainer");
-
-    let thAmount = document.createElement("p");
-    thAmount.innerHTML = "+" + income.amount;
-    thAmount.classList.add("history-amount-positive");
-
-    let thName = document.createElement("p");
-    thName.innerHTML = income.name;
-    thName.classList.add("history-name");
-
-    let thDate = document.createElement("p");
-    thDate.innerHTML = income.date;
-    thDate.classList.add("history-date");
-
-    thtdContainer.appendChild(thName);
-    thtdContainer.appendChild(thDate);
-    thContainer.appendChild(thtdContainer);
-    thContainer.appendChild(thAmount);
-    transactionHistoryContainer.appendChild(thContainer);
-  })
-})
-allFilter.addEventListener('click', ()=>{
-  window.location.reload()
-})
-
-lineFilterBtn.addEventListener('click',()=>{
-  
-  chartType='line'
-  console.log(chartType, 'chart')
-})
-barFilterBtn.addEventListener('click',()=>{
-  chartType='bar'
-  console.log(chartType, 'chart')
-})
-pieFilterBtn.addEventListener('click',()=>{
-  console.log(expenseChart.data.datasets)
-  expenseChart.update();
-})
-const datasets = expenseChart.data;
-console.log(datasets);
+allFilter.addEventListener('click', () => {
+  allFilter.classList.add('active-filter'); 
+  expenseFilter.classList.remove('active-filter');
+  incomeFilter.classList.remove('active-filter');
+  updateTransactionHistory(transactions);
+});
